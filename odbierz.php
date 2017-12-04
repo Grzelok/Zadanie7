@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user = $_SESSION['login'];
-$max_rozmiar = 1000;
+$max_rozmiar = 1000000;
 $target = "./$user/";
 if (is_uploaded_file($_FILES['plik']['tmp_name']))
 {
@@ -13,4 +13,5 @@ move_uploaded_file($_FILES['plik']['tmp_name'],$target.$_FILES['plik']['name']);
 }
 }
 else {echo 'Błąd przy przesyłaniu danych!';}
+echo "<br><a href='zalogowany.php'>powrot</a></br>"
 ?>

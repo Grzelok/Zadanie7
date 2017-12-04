@@ -3,7 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <BODY>
-<a href='login_klient.php'>logowanie klienta</a><br>
-<a href='login_klient.php'>logowanie klienta</a><br>
+<h2>Witaj w chmurze</h2>
+<a href='login_klient.php'>Logowanie</a><br>
+<a href='rejestracja.php'>Rejestracja</a><br>
 </BODY>
 </HTML>

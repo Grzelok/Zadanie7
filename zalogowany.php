@@ -9,6 +9,7 @@ $user = $_SESSION['login'];
 ENCTYPE="multipart/form-data">
 <input type="file" name="plik"/>
 <input type="submit" value="Wyślij plik"/><br>
+</form>
 <h2>Twoje pliki kliknij aby pobrac</h2>
 <?php
 $dir = "./$user/";
@@ -21,6 +22,10 @@ if ($handle = opendir($dir)) {
     closedir($handle);
 }
 ?>
+<form method="post" action="katalog.php">
+<h2>Tworzenie katalogu</h2>
+<br><input type="text" name="kat" placeholder="Podaj nazwe katalogu"></br>
+<br><input type="submit" name="stworz" value="stworz"></br>
 </form>
 </body>
 </html>

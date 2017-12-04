@@ -25,7 +25,7 @@ if($rekord['pass']==$haslo) // czy hasło zgadza się z BD
 		$czas1 = time ();
 		$czas2 = date ("d:m:Y H:i:s", $czas1);
 		$result1 = mysqli_query($link, "update users set data_ok='$czas2' where user='$login'");
-		if(!is_dir($login)){																//jeśli pierwsze zalogowanie to tworzy katalog główny
+		if(!is_dir($login)){																
 		mkdir($login);
 		header('Location: zalogowany.php');
 		}
