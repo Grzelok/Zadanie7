@@ -19,27 +19,30 @@ else
 { // Jeśli $rekord istnieje
 if($rekord['pass']==$haslo) // czy hasło zgadza się z BD
 {
-		$ip = $_SERVER['REMOTE_ADDR'];
 		$_SESSION['zalogowany'] = true;
 		$_SESSION['login'] = $login;
+		$proba = 0;
 		$czas1 = time ();
 		$czas2 = date ("d:m:Y H:i:s", $czas1);
-		$result1 = mysqli_query($link, "update users set data_ok='$czas2' where user='$login'");
+		$result1 = mysqli_query($link, "update users set data_ok='$czas2', proba='$proba' where user='$login'");
 		if(!is_dir($login)){																
 		mkdir($login);
-		header('Location: zalogowany.php');
+		header('Location: auth.php');
 		}
 		else{
-		header('Location: zalogowany.php');
+		header('Location: auth.php');
 		}
 }
 else
 {
+		$_SESSION['login'] = $login;
 		$czas1 = time ();
 		$czas2 = date ("d:m:Y H:i:s", $czas1);
-		$result1 = mysqli_query($link, "update users set data_error='$czas2' where user='$login'");
+		$proba = $rekord['proba'];
+		$proba++;
+		$result1 = mysqli_query($link, "update users set data_error='$czas2', proba='$proba' where user='$login'");
 mysqli_close($link);
-echo "Błąd logowania";
+header('Location: auth.php');
 }
 }
 ?>

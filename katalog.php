@@ -2,9 +2,10 @@
 session_start();
 $user = $_SESSION['login'];
 $name=$_POST['kat'];
+$_SESSION['folder'] = $name;
 chdir("$user");
 if(!is_dir($name)){																
-		mkdir($name, 7777);
+		mkdir($name);
 		header('Location: zalogowany.php');
 		}
 		else

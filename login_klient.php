@@ -4,7 +4,7 @@
 	<title>Grzelak</title>
 	</head>
 		<body>
-			<form method="post" action="logowanie.php">
+			<form method="post" action="auth.php">
 					<h2>Panel logowania klienta</h2>
 					<br><input type="login" name="login" placeholder="Podaj login"></br>
 					<br><input type="password" name="haslo" placeholder="Podaj haslo"></br>
