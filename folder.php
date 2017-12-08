@@ -15,7 +15,7 @@ ENCTYPE="multipart/form-data">
 <h2>Twoje pliki kliknij aby pobrac w katalogu <? echo $user."/".$folder?>/</h2>
 <?php
 chdir("$user/$folder");
-foreach(glob("*{*.txt,*.pdf,*.zip,*.rar,*.exe,*.doc,*.docx,*.xls,*.xlsx,*.jpg,*.gif,*.png}", GLOB_BRACE) as $file)
+foreach(glob("*{*.*}", GLOB_BRACE) as $file)
   if($file != '.' && $file != '..') 
     echo "<a href='./$user/$file' download>$file</a><br>";
 ?>

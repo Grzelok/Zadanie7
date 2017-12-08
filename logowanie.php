@@ -13,7 +13,7 @@ $rekord = mysqli_fetch_array($result); // wiersza z BD, struktura zmiennej jak w
 if(!$rekord) //Jeśli brak, to nie ma użytkownika o podanym loginie
 {
 echo "Błąd logowania";
-echo "<br><a href='login_klient'>Powrot</a><br>";
+echo "<br><a href='login_klient.php'>Powrot</a><br>";
 }
 else
 { // Jeśli $rekord istnieje
@@ -21,10 +21,10 @@ if($rekord['pass']==$haslo) // czy hasło zgadza się z BD
 {
 		$_SESSION['zalogowany'] = true;
 		$_SESSION['login'] = $login;
-		$proba = 0;
+		$_SESSION['haslo'] = $haslo;
 		$czas1 = time ();
-		$czas2 = date ("d:m:Y H:i:s", $czas1);
-		$result1 = mysqli_query($link, "update users set data_ok='$czas2', proba='$proba' where user='$login'");
+		$czas2 = date ("d-m-Y H:i:s", $czas1);
+		$result1 = mysqli_query($link, "update users set data_ok='$czas2' where user='$login'");
 		if(!is_dir($login)){																
 		mkdir($login);
 		header('Location: auth.php');
@@ -37,7 +37,7 @@ else
 {
 		$_SESSION['login'] = $login;
 		$czas1 = time ();
-		$czas2 = date ("d:m:Y H:i:s", $czas1);
+		$czas2 = date ("d-m-Y H:i:s", $czas1);
 		$proba = $rekord['proba'];
 		$proba++;
 		$result1 = mysqli_query($link, "update users set data_error='$czas2', proba='$proba' where user='$login'");

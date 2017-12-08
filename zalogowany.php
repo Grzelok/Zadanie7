@@ -1,6 +1,15 @@
 <?php
 session_start();
 $user = $_SESSION['login'];
+$userdb = '25510036_z7';
+$passdb = 'martin12';
+$selectdb = '25510036_z7';
+$link = mysqli_connect('grzelok.com.pl', $userdb,$passdb, $selectdb); // połączenie z BD – wpisać swoje parametry !!!
+if(!$link) { echo"Błąd: ". mysqli_connect_errno()." ".mysqli_connect_error(); } // obsługa błędu połączenia z BD
+mysqli_query($link, "SET NAMES 'utf8'"); // ustawienie polskich znaków
+$result = mysqli_query($link, "SELECT * FROM users WHERE user='$user'"); // pobranie z BD wiersza, w którym login=login z formularza
+$rekord = mysqli_fetch_array($result); // wiersza z BD, struktura zmiennej jak w BD
+echo "ostatnie nieudane logowanie ".$rekord['data_error']."<br>";
 ?>
 <html>
 <body>
